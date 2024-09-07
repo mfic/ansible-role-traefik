@@ -1,0 +1,23 @@
+http:
+  routers:
+    traefik-api:
+      rule: Host(`{{ traefik.api.host }}`) 
+      service: api@internal
+      entryPoints:
+        - websecure
+      middlewares:
+        - default-headers
+        - traefik-auth
+      tls:
+        certResolver: "cloudflare"
+        domains:
+          - main: "{{ traefik.api.main }}"
+            sans: 
+              {% for san in traefik.api.sans %}
+- "{{ san }}"
+              {% endfor %}
+            
+  middlewares:
+    traefik-auth:
+      basicAuth:
+        usersFile: "/config/users.txt"
