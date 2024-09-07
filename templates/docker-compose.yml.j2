@@ -4,7 +4,7 @@ services:
     image: "traefik"
     restart: "unless-stopped"
     networks:
-      - {{ traefik.docker_network }}
+      - {{ traefik_docker_network }}
     environment:
       - "CF_API_EMAIL={{ cloudflare.email }}"
       - "CF_DNS_API_TOKEN={{ cloudflare.token }}"
@@ -19,11 +19,11 @@ services:
       - "./acme-cf.json:/acme-cf.json"
       - "./acme-http.json:/acme-http.json"
     logging:
-      driver: "{{ traefik.logging.driver }}"
+      driver: "{{ traefik_logging.driver }}"
       options:
-        max-size: "{{ traefik.logging.max_size }}"
-        max-file: "{{ traefik.logging.max_file }}"
+        max-size: "{{ traefik_logging.max_size }}"
+        max-file: "{{ traefik_logging.max_file }}"
 
 networks:
-  {{ traefik.docker_network }}:
+  {{ traefik_docker_network }}:
     external: true

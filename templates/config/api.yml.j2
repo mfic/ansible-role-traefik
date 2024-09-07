@@ -1,7 +1,7 @@
 http:
   routers:
     traefik-api:
-      rule: Host(`{{ traefik.api.host }}`) 
+      rule: Host(`{{ traefik_api.host }}`) 
       service: api@internal
       entryPoints:
         - websecure
@@ -11,9 +11,9 @@ http:
       tls:
         certResolver: "cloudflare"
         domains:
-          - main: "{{ traefik.api.main }}"
+          - main: "{{ traefik_api.main }}"
             sans: 
-              {% for san in traefik.api.sans %}
+              {% for san in traefik_api.sans %}
 - "{{ san }}"
               {% endfor %}
             

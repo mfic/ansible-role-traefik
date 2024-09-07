@@ -1,19 +1,18 @@
 ---
 # defaults file for ansible-role-traefik
-traefik:
-  docker_network: "webproxy"
-  working_directory: "/path"
-  api:
-    host: "domain"
-    users:
-      - "user1"
-    main: "domain1"
-    sans:
-      - "domain2"
-  logging:
-    driver: "json-file"
-    max_size: "10m"
-    max_file: "3"
+traefik_docker_network: "webproxy"
+traefik_working_directory: "/path"
+traefik_logging:
+  driver: "json-file"
+  max_size: "10m"
+  max_file: "3"
+traefik_api:
+  host: "domain"
+  users:
+    - "user1"
+  main: "domain1"
+  sans:
+    - "domain2"
 cloudflare:
   email: "you@mail.com"
   token: "your_token"
