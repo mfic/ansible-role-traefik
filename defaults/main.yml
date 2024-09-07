@@ -10,6 +10,10 @@ traefik:
     main: "domain1"
     sans:
       - "domain2"
+  logging:
+    driver: "json-file"
+    max_size: "10m"
+    max_file: "3"
 cloudflare:
   email: "you@mail.com"
   token: "your_token"

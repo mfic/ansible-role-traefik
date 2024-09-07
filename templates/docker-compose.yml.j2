@@ -18,7 +18,11 @@ services:
       - "./config:/config:ro"
       - "./acme-cf.json:/acme-cf.json"
       - "./acme-http.json:/acme-http.json"
-      - "./logs:/logs"
+    logging:
+      driver: "{{ traefik.logging.driver }}"
+      options:
+        max-size: "{{ traefik.logging.max_size }}"
+        max-file: "{{ traefik.logging.max_file }}"
 
 networks:
   {{ traefik.docker_network }}:
