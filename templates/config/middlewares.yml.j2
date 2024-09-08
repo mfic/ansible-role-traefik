@@ -18,17 +18,6 @@ http:
         customRequestHeaders:
           X-Forwarded-Proto: https
 
-    idrac:
-      headers:
-        frameDeny: true
-        browserXssFilter: true
-        forceSTSHeader: true
-        stsIncludeSubdomains: true
-        stsSeconds: 15552000
-        customFrameOptionsValue: SAMEORIGIN
-        customRequestHeaders:
-          X-Forwarded-Proto: https
-
     default-whitelist:
       ipWhiteList:
         sourceRange:
@@ -39,5 +28,6 @@ http:
     secured:
       chain:
         middlewares:
+        - https-redirectscheme
         - default-whitelist
         - default-headers
