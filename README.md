@@ -15,6 +15,9 @@ Role Variables
 ```yaml
 traefik_docker_network: "webproxy"
 traefik_working_directory: "/path"
+traefik_log:
+  level: "info"
+  format: "json"
 traefik_logging:
   driver: "json-file"
   max_size: "10m"

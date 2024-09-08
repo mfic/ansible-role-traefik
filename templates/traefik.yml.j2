@@ -2,10 +2,10 @@ global:
   checkNewVersion: true
 
 log:
-  level: debug
-  format: json
+  level: {{ traefik_log.level }}
+  format: {{ traefik_log.format }}
 accessLog:
-  format: json
+  format: {{ traefik_log.format }}
 
 api:
   dashboard: true
@@ -49,3 +49,12 @@ certificatesResolvers:
       httpChallenge:
         entryPoint: web
       caServer: https://acme-v02.api.letsencrypt.org/directory
+
+http:
+  routers:
+    default:
+      rule: "HostRegexp(`{host:.+}`)"
+      entryPoints:
+        - websecure
+      middlewares:
+        - default-headers
