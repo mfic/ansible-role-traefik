@@ -49,3 +49,9 @@
     state: present
   with_items: 
     - "{{ traefik_api.users }}"
+
+- name: Ensure the proxy network exists
+  community.docker.docker_network:
+    name: "{{ traefik_docker_network }}"
+    state: present
+
