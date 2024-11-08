@@ -11,6 +11,7 @@ traefik_logging:
   max_file: "3"
 traefik_api:
   host: "domain"
+  tls_provider: "cloudflare" #letsencrypt (HTTP-Challange) or cloudflare (DNS-Challange)
   users:
     - "user1"
   main: "domain1"

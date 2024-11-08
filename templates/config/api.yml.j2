@@ -9,7 +9,7 @@ http:
         - default-headers
         - traefik-auth
       tls:
-        certResolver: "cloudflare"
+        certResolver: "{{ traefik_api.tls_provider }}"
         domains:
           - main: "{{ traefik_api.main }}"
             sans: 
