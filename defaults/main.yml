@@ -9,8 +9,8 @@ traefik_logging:
   driver: "json-file"
   max_size: "10m"
   max_file: "3"
+traefik_api_host: "domain"
 traefik_api:
-  host: "domain"
   tls_provider: "cloudflare" #letsencrypt (HTTP-Challange) or cloudflare (DNS-Challange)
   users:
     - "user1"
